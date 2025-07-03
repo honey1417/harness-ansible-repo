@@ -63,4 +63,4 @@
         state: started
         restart_policy: always
         ports:
-          - "8081:8082"  # Change this based on your app
+          - "8082:8081"  # Change this based on your app
