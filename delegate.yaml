@@ -53,14 +53,14 @@
         
     - name: Pull Docker image from DockerHub
       docker_image:
-        name: harshini1402/calculator-repo:release-2
+        name: harshini1402/calculator-repo:snap-1
         source: pull
 
     - name: Run Docker container for your app
       docker_container:
         name: my-app
-        image: harshini1402/calculator-repo:release-2
+        image: harshini1402/calculator-repo:snap-1
         state: started
         restart_policy: always
         ports:
-          - "8081:8081"  # Change this based on your app
+          - "8081:8082"  # Change this based on your app
