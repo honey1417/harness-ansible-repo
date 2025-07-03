@@ -53,13 +53,13 @@
         
     - name: Pull Docker image from DockerHub
       docker_image:
-        name: harshini1402/calculator-repo:release-1
+        name: harshini1402/calculator-repo:release-2
         source: pull
 
     - name: Run Docker container for your app
       docker_container:
         name: my-app
-        image: harshini1402/calculator-repo:release-1
+        image: harshini1402/calculator-repo:release-2
         state: started
         restart_policy: always
         ports:
