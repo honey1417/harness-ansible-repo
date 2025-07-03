@@ -36,10 +36,31 @@
     - name: Install Harness Delegate (Docker-based)
       shell: |
         docker run -d --cpus=1 --memory=2g --network=host \
-        -e DELEGATE_NAME=docker-delegate-mig-ansible \
+        -e DELEGATE_NAME=docker-delegate-ansible-harsh \
         -e NEXT_GEN="true" \
         -e DELEGATE_TYPE="DOCKER" \
         -e ACCOUNT_ID=ucHySz2jQKKWQweZdXyCog \
         -e DELEGATE_TOKEN=NTRhYTY0Mjg3NThkNjBiNjMzNzhjOGQyNjEwOTQyZjY= \
         -e DELEGATE_TAGS="" \
-        -e MANAGER_HOST_AND_PORT=https://app.harness.io us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate:25.04.85701
+        -e MANAGER_HOST_AND_PORT=https://app.harness.io us-docker.pkg.dev/gar-prod-setup/harness-public/harness/delegate:25.06.86100
+
+    - name: Install Python Docker SDK and dependencies
+      pip:
+        name:
+          - docker
+          - requests
+        executable: pip3
+        
+    - name: Pull Docker image from DockerHub
+      docker_image:
+        name: harshini1402/calculator-repo:release-1
+        source: pull
+
+    - name: Run Docker container for your app
+      docker_container:
+        name: my-app
+        image: harshini1402/calculator-repo:release-1
+        state: started
+        restart_policy: always
+        ports:
+          - "8081:8081"  # Change this based on your app

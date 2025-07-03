@@ -1,9 +1,8 @@
 provider "google" {
-  project = "sam-458313"        # ← your GCP project ID
-  region  = "us-west1"          # optional, for regional resources
-  zone    = "us-west1-a"        # for zonal resources like compute instances
+  project = "oval-compass-463506-r0"        # ← your GCP project ID
+  region  = "us-west3"          # optional, for regional resources
+  zone    = "us-west3-c"        # for zonal resources like compute instances
 }
-
 
 
 resource "tls_private_key" "my_ssh_key" {
